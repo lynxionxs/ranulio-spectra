@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Menu Button Example</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8">
+    var menuOpen = false;
+    var menuDiv = "";
+    
+    function init() {
+        document.addEventListener("deviceready", startup, false);
+    }
+    
+    function startup() {
+        console.log("Business time...");
+        menuDiv = document.querySelector("#menu");
+        
+        document.addEventListener("menubutton", doMenu, false);
+    }
+    
+    function doMenu() {
+        console.log("The menu was clicked...");
+        if(menuOpen) {
+            console.log("close the menu");
+            menuDiv.style.display="none";
+            menuOpen = false;
+        }else{
+            console.log("open the menu");
+            menuDiv.style.display="block";
+            menuOpen = true;
+        }
+    }
+    </script>
+    <style>
+    div#menu{
+        width: 30%;
+        background-color: yellow;
+        position: absolute;
+        bottom: 0;
+        left: 35%;
+        padding: 10px;
+        display: none;
+    }
+    </style> 
+  </head>
+  <body onload="init()">
+  
+  <h2>Menu test</h2>
+  
+  <p>Try hitting the menu button</p>
+  
+  <div id="menu">
+    <a href="">Option one</a>
+    <a href="">Option two</a>
+    <a href="">Option three</a>
+  </div>
+  
+  </body>
+</html>
